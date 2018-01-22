@@ -6,16 +6,39 @@ import CompletedToDos from '../screens/CompletedToDos';
 
 const MainNavigator = StackNavigator(
   {
-    Home: { screen: Home },
+    Home: {
+      screen: Home,
+    },
     ToDos: {
-      screen: TabNavigator({
-        Pending: {
-          screen: PendingToDos,
+      screen: TabNavigator(
+        {
+          Pending: {
+            screen: StackNavigator({
+              Pending: { screen: PendingToDos },
+            }),
+          },
+          Completed: {
+            screen: StackNavigator({
+              Completed: { screen: CompletedToDos },
+            }),
+          },
         },
-        Completed: {
-          screen: CompletedToDos,
+        {
+          tabBarOptions: {
+            inactiveTintColor: 'floralwhite',
+            activeTintColor: 'bisque',
+            indicatorStyle: {
+              backgroundColor: 'bisque',
+            },
+            labelStyle: {
+              fontSize: 12,
+            },
+            style: {
+              backgroundColor: 'lightseagreen',
+            },
+          },
         },
-      }),
+      ),
     },
   },
   {

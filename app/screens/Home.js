@@ -1,12 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Button from '../components/Button';
 
-const Home = () => (
+const Home = ({ navigation }) => (
   <View style={styles.container}>
     <Icon name="rocket" size={30} color="white" />
     <Text style={styles.title}>My ToDos App</Text>
-    <Text style={styles.description}>BUILT WITH REACT NATIVE</Text>
+    <Text style={styles.description}>IT&apos;S NEVER TOO LATE TO</Text>
+    <Text style={styles.description}>GET YOUR SHIT TOGETHER.</Text>
+    <Button title="START" onPress={() => navigation.navigate('Pending')} />
   </View>
 );
 
@@ -28,7 +32,16 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 14,
     letterSpacing: 4,
+    paddingLeft: 10,
+    paddingRight: 10,
+    textAlign: 'center',
   },
 });
+
+Home.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Home;
