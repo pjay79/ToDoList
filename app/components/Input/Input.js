@@ -5,7 +5,8 @@ import styles from './styles';
 const Input = props => (
   <View>
     <TextInput
-      placeholder="enter your todos here..."
+      autoFocus
+      placeholder="Enter your todos here..."
       returnKeyType="done"
       underlineColorAndroid="transparent"
       style={styles.inputStyle}
