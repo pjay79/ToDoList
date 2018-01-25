@@ -30,9 +30,9 @@ class PendingToDos extends Component {
   state = {
     todo: '',
     todoList: [
-      { key: JSON.stringify('Buy milk'), value: 'Buy milk', completed: false },
-      { key: JSON.stringify('Clean house'), value: 'Clean house', completed: false },
-      { key: JSON.stringify('Post mail'), value: 'Post mail', completed: false },
+      { key: JSON.stringify(`Buy milk${new Date()}`), value: 'Buy milk', completed: false },
+      { key: JSON.stringify(`Clean house${new Date()}`), value: 'Clean house', completed: false },
+      { key: JSON.stringify(`Post mail${new Date()}`), value: 'Post mail', completed: false },
     ],
   };
 
@@ -44,10 +44,15 @@ class PendingToDos extends Component {
     if (this.state.todo.trim() !== '') {
       const todoList = [
         ...this.state.todoList,
-        { key: JSON.stringify(this.state.todo), value: this.state.todo, completed: false },
+        {
+          key: JSON.stringify(this.state.todo + new Date()),
+          value: this.state.todo,
+          completed: false,
+        },
       ];
       this.setState({ todoList });
       this.setState({ todo: '' });
+      console.log(todoList);
     }
   };
 
