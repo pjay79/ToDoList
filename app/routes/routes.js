@@ -1,5 +1,6 @@
+// import { Platform } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
-
+import { NavigationComponent } from 'react-native-material-bottom-navigation';
 import Home from '../screens/Home';
 import PendingToDos from '../screens/PendingToDos';
 import CompletedToDos from '../screens/CompletedToDos';
@@ -24,7 +25,14 @@ const MainNavigator = StackNavigator(
           },
         },
         {
+          tabBarComponent: NavigationComponent,
+          tabBarPosition: 'bottom',
           tabBarOptions: {
+            bottomNavigationOptions: {
+              labelColor: 'floralwhite',
+              activeLabelColor: 'bisque',
+              backgroundColor: 'lightseagreen',
+            },
             inactiveTintColor: 'floralwhite',
             activeTintColor: 'bisque',
             indicatorStyle: {
@@ -33,9 +41,9 @@ const MainNavigator = StackNavigator(
             labelStyle: {
               fontSize: 12,
             },
-            style: {
-              backgroundColor: 'lightseagreen',
-            },
+            // style: {
+            // backgroundColor: 'lightseagreen',
+            // },
           },
         },
       ),

@@ -15,10 +15,11 @@ class PendingToDos extends Component {
   };
 
   static navigationOptions = {
-    title: 'My ToDos App',
+    title: 'ToDos',
     headerTintColor: 'white',
     headerStyle: {
       backgroundColor: 'lightseagreen',
+      borderBottomWidth: 0,
     },
     headerLeft: null,
     tabBarLabel: 'Pending',

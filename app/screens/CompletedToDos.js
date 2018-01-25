@@ -12,10 +12,11 @@ class CompletedToDos extends Component {
   };
 
   static navigationOptions = {
-    title: 'My ToDos App',
+    title: 'Completed',
     headerTintColor: 'white',
     headerStyle: {
       backgroundColor: 'lightseagreen',
+      borderBottomWidth: 0,
     },
     headerLeft: null,
     tabBarLabel: 'Completed',
