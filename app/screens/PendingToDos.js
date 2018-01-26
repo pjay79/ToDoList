@@ -15,7 +15,7 @@ class PendingToDos extends Component {
   };
 
   static navigationOptions = {
-    title: 'ToDos',
+    title: 'Pending',
     headerTintColor: 'white',
     headerStyle: {
       backgroundColor: 'lightseagreen',

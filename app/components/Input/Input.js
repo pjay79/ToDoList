@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
 import styles from './styles';
 
@@ -16,5 +17,11 @@ const Input = props => (
     />
   </View>
 );
+
+Input.propTypes = {
+  onChangeText: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onSubmitEditing: PropTypes.func.isRequired,
+};
 
 export default Input;
