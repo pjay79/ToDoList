@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { View, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Input from '../components/Input';
 import Button from '../components/Button';
@@ -57,13 +57,10 @@ class PendingToDos extends Component {
     }
   };
 
-  deleteToDo = () => {
-    Alert.alert(
-      'Message:',
-      'This ToDo has been deleted.',
-      [{ text: 'OK', onPress: () => console.log('Deleted!') }],
-      { cancelable: false },
-    );
+  deleteToDo = (key) => {
+    this.setState({
+      todoList: this.state.todoList.filter(todo => todo.key !== key),
+    });
   };
 
   render() {
