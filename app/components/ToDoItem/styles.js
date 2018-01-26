@@ -2,6 +2,9 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   itemWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     width: 300,
     backgroundColor: 'white',
     borderColor: 'lightseagreen',

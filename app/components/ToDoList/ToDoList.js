@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 import ToDoItem from '../ToDoItem';
 
-const ToDoList = ({ todos }) => (
-  <FlatList data={todos} renderItem={({ item }) => <ToDoItem todo={item} id={item.id} />} />
+const ToDoList = ({ todos, deleteToDo }) => (
+  <FlatList
+    data={todos}
+    renderItem={({ item }) => <ToDoItem todo={item} id={item.id} deleteToDo={deleteToDo} />}
+  />
 );
 
 ToDoList.propTypes = {
