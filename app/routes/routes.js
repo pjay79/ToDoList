@@ -1,5 +1,5 @@
-// import { Platform } from 'react-native';
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import { Platform } from 'react-native';
+import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 import { NavigationComponent } from 'react-native-material-bottom-navigation';
 import Home from '../screens/Home';
 import PendingToDos from '../screens/PendingToDos';
@@ -25,7 +25,7 @@ const MainNavigator = StackNavigator(
           },
         },
         {
-          tabBarComponent: NavigationComponent,
+          tabBarComponent: Platform.OS === 'android' ? NavigationComponent : TabBarBottom,
           tabBarPosition: 'bottom',
           tabBarOptions: {
             bottomNavigationOptions: {
@@ -41,9 +41,9 @@ const MainNavigator = StackNavigator(
             labelStyle: {
               fontSize: 12,
             },
-            // style: {
-            // backgroundColor: 'lightseagreen',
-            // },
+            style: {
+              backgroundColor: 'lightseagreen',
+            },
           },
         },
       ),

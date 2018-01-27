@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Input from '../components/Input';
-import Button from '../components/Button';
 import ToDoList from '../components/ToDoList';
 
 class PendingToDos extends Component {
-  static propTypes = {
-    navigation: PropTypes.shape({
-      navigate: PropTypes.func.isRequired,
-    }).isRequired,
-  };
-
   static navigationOptions = {
     title: 'Pending',
     headerTintColor: 'white',
@@ -31,9 +23,9 @@ class PendingToDos extends Component {
   state = {
     todo: '',
     todoList: [
-      { key: JSON.stringify(`Buy milk${new Date()}`), value: 'Buy milk', completed: false },
-      { key: JSON.stringify(`Clean house${new Date()}`), value: 'Clean house', completed: false },
-      { key: JSON.stringify(`Post mail${new Date()}`), value: 'Post mail', completed: false },
+      { key: JSON.stringify(`Buy milk${new Date()}`), value: 'Buy milk' },
+      { key: JSON.stringify(`Clean house${new Date()}`), value: 'Clean house' },
+      { key: JSON.stringify(`Post mail${new Date()}`), value: 'Post mail' },
     ],
   };
 
@@ -48,7 +40,6 @@ class PendingToDos extends Component {
         {
           key: JSON.stringify(this.state.todo + new Date()),
           value: this.state.todo,
-          completed: false,
         },
       ];
       this.setState({ todoList });
@@ -73,11 +64,6 @@ class PendingToDos extends Component {
             value={this.state.todo}
             onSubmitEditing={this.addToDo}
           />
-          <Button
-            title="Go to Completed"
-            onPress={() => this.props.navigation.navigate('Completed')}
-          />
-          <Button title="Back to Home" onPress={() => this.props.navigation.navigate('Home')} />
         </View>
       </KeyboardAwareScrollView>
     );

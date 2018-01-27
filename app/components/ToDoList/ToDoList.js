@@ -6,7 +6,7 @@ import ToDoItem from '../ToDoItem';
 const ToDoList = ({ todos, deleteToDo }) => (
   <FlatList
     data={todos}
-    renderItem={({ item }) => <ToDoItem todo={item} id={item.id} deleteToDo={deleteToDo} />}
+    renderItem={({ item }) => <ToDoItem todo={item} deleteToDo={deleteToDo} />}
   />
 );
 
