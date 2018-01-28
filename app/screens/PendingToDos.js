@@ -23,9 +23,9 @@ class PendingToDos extends Component {
   state = {
     todo: '',
     todoList: [
-      { key: JSON.stringify(`Buy milk${new Date()}`), value: 'Buy milk' },
-      { key: JSON.stringify(`Clean house${new Date()}`), value: 'Clean house' },
-      { key: JSON.stringify(`Post mail${new Date()}`), value: 'Post mail' },
+      { key: JSON.stringify(`Buy milk ${new Date()}`), value: 'Buy milk', complete: false },
+      { key: JSON.stringify(`Clean house ${new Date()}`), value: 'Clean house', complete: false },
+      { key: JSON.stringify(`Post mail ${new Date()}`), value: 'Post mail', complete: false },
     ],
   };
 
@@ -38,8 +38,9 @@ class PendingToDos extends Component {
       const todoList = [
         ...this.state.todoList,
         {
-          key: JSON.stringify(this.state.todo + new Date()),
+          key: JSON.stringify(`${this.state.todo}${new Date()}`),
           value: this.state.todo,
+          complete: false,
         },
       ];
       this.setState({ todoList });
@@ -54,11 +55,21 @@ class PendingToDos extends Component {
     });
   };
 
+  completeToDo = (key) => {
+    const todos = this.state.todoList;
+    const completedToDo = this.state.todoList.findIndex(todo => todo.key === key);
+    todos[completedToDo].complete = true;
+  };
+
   render() {
     return (
       <KeyboardAwareScrollView>
         <View style={styles.container}>
-          <ToDoList todos={this.state.todoList} deleteToDo={this.deleteToDo} />
+          <ToDoList
+            todos={this.state.todoList}
+            deleteToDo={this.deleteToDo}
+            completeToDo={this.completeToDo}
+          />
           <Input
             onChangeText={this.createToDo}
             value={this.state.todo}
@@ -75,6 +86,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
+    paddingTop: 10,
   },
 });
 

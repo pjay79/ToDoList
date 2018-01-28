@@ -20,6 +20,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 14,
+    marginLeft: 10,
+    marginRight: 10,
   },
 });
 

@@ -10,11 +10,17 @@ const styles = StyleSheet.create({
     borderColor: 'lightseagreen',
     borderWidth: 2,
     marginTop: 10,
-    marginBottom: 2,
+    marginBottom: 5,
     paddingLeft: 10,
     paddingRight: 10,
-    paddingBottom: 10,
-    paddingTop: 10,
+    paddingBottom: 5,
+    paddingTop: 5,
+  },
+  buttonWrapper: {
+    alignSelf: 'flex-end',
+  },
+  iconStyle: {
+    margin: 5,
   },
 });
 
