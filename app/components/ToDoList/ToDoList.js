@@ -16,9 +16,13 @@ ToDoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
     key: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
-  })).isRequired,
+  })),
   deleteToDo: PropTypes.func.isRequired,
   completeToDo: PropTypes.func.isRequired,
+};
+
+ToDoList.defaultProps = {
+  todos: [],
 };
 
 export default ToDoList;

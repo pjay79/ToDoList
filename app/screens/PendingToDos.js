@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, AsyncStorage } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Input from '../components/Input';
@@ -22,11 +22,14 @@ class PendingToDos extends Component {
 
   state = {
     todo: '',
-    todoList: [
-      { key: JSON.stringify(`Buy milk - ${new Date()}`), value: 'Buy milk', complete: false },
-      { key: JSON.stringify(`Clean house - ${new Date()}`), value: 'Clean house', complete: false },
-      { key: JSON.stringify(`Post mail - ${new Date()}`), value: 'Post mail', complete: false },
-    ],
+    todoList: [],
+  };
+
+  componentDidMount = async () => {
+    const result = await AsyncStorage.getItem('todoList');
+    if (result !== null || undefined) {
+      this.setState({ todoList: JSON.parse(result) });
+    }
   };
 
   createToDo = (todo) => {
@@ -34,7 +37,7 @@ class PendingToDos extends Component {
   };
 
   addToDo = () => {
-    if (this.state.todo.trim() !== '') {
+    if (this.state.todo.length) {
       const todoList = [
         ...this.state.todoList,
         {
@@ -43,6 +46,7 @@ class PendingToDos extends Component {
           complete: false,
         },
       ];
+      AsyncStorage.setItem('todoList', JSON.stringify(todoList));
       this.setState({ todoList });
       this.setState({ todo: '' });
       console.log(todoList);
@@ -51,6 +55,7 @@ class PendingToDos extends Component {
 
   deleteToDo = (key) => {
     const todoList = [...this.state.todoList.filter(todo => todo.key !== key)];
+    AsyncStorage.setItem('todoList', JSON.stringify(todoList));
     this.setState({
       todoList,
     });
@@ -61,6 +66,7 @@ class PendingToDos extends Component {
     const todoList = [...this.state.todoList];
     const completedToDo = todoList.findIndex(todo => todo.key === key);
     todoList[completedToDo].complete = true;
+    AsyncStorage.setItem('todoList', JSON.stringify(todoList));
     console.log(todoList);
   };
 
