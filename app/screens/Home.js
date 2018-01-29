@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     letterSpacing: 4,
     paddingLeft: 10,
     paddingRight: 10,
-    textAlign: 'center',
   },
 });
 

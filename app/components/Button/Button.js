@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, View, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Entypo';
 import styles from './styles';
 
-const Button = ({ title, onPress }) => (
+const Button = ({ title, onPress, style }) => (
   <TouchableOpacity onPress={onPress}>
-    <View style={styles.buttonContainer}>
-      <Icon name="pencil" size={14} color="white" />
+    <View style={[styles.buttonContainer, style]}>
       <Text style={styles.buttonText}>{title}</Text>
     </View>
   </TouchableOpacity>
@@ -16,6 +14,14 @@ const Button = ({ title, onPress }) => (
 Button.propTypes = {
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
+  style: PropTypes.shape({
+    key: PropTypes.string,
+    value: PropTypes.any,
+  }),
+};
+
+Button.defaultProps = {
+  style: {},
 };
 
 export default Button;

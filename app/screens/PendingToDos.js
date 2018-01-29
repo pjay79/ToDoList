@@ -23,9 +23,9 @@ class PendingToDos extends Component {
   state = {
     todo: '',
     todoList: [
-      { key: JSON.stringify(`Buy milk ${new Date()}`), value: 'Buy milk', complete: false },
-      { key: JSON.stringify(`Clean house ${new Date()}`), value: 'Clean house', complete: false },
-      { key: JSON.stringify(`Post mail ${new Date()}`), value: 'Post mail', complete: false },
+      { key: JSON.stringify(`Buy milk - ${new Date()}`), value: 'Buy milk', complete: false },
+      { key: JSON.stringify(`Clean house - ${new Date()}`), value: 'Clean house', complete: false },
+      { key: JSON.stringify(`Post mail - ${new Date()}`), value: 'Post mail', complete: false },
     ],
   };
 
@@ -38,7 +38,7 @@ class PendingToDos extends Component {
       const todoList = [
         ...this.state.todoList,
         {
-          key: JSON.stringify(`${this.state.todo}${new Date()}`),
+          key: JSON.stringify(`${this.state.todo} - ${new Date()}`),
           value: this.state.todo,
           complete: false,
         },
@@ -50,15 +50,18 @@ class PendingToDos extends Component {
   };
 
   deleteToDo = (key) => {
+    const todoList = [...this.state.todoList.filter(todo => todo.key !== key)];
     this.setState({
-      todoList: this.state.todoList.filter(todo => todo.key !== key),
+      todoList,
     });
+    console.log(todoList);
   };
 
   completeToDo = (key) => {
-    const todos = this.state.todoList;
-    const completedToDo = this.state.todoList.findIndex(todo => todo.key === key);
-    todos[completedToDo].complete = true;
+    const todoList = [...this.state.todoList];
+    const completedToDo = todoList.findIndex(todo => todo.key === key);
+    todoList[completedToDo].complete = true;
+    console.log(todoList);
   };
 
   render() {
