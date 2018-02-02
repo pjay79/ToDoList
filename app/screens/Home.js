@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Button from '../components/Button';
 
-const Home = ({ navigation }) => (
-  <View style={styles.container}>
-    <Icon name="rocket" size={30} color="white" />
-    <Text style={styles.title}>My ToDos App</Text>
-    <Text style={styles.description}>IT&apos;S NEVER TOO LATE TO</Text>
-    <Text style={styles.description}>GET YOUR SHIT TOGETHER.</Text>
-    <Button title="START" onPress={() => navigation.navigate('Pending')} />
-  </View>
-);
+class Home extends Component {
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: 'lightseagreen',
+      elevation: 0,
+    },
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Icon name="rocket" size={30} color="white" />
+        <Text style={styles.title}>ToDos</Text>
+        <Text style={styles.description}>IT&apos;S NEVER TOO LATE TO</Text>
+        <Text style={styles.description}>GET YOUR SHIT TOGETHER.</Text>
+        <Button title="START" onPress={() => this.props.navigation.navigate('ToDos')} />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -24,7 +35,7 @@ const styles = StyleSheet.create({
   title: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 24,
+    fontSize: 36,
     marginTop: 10,
     marginBottom: 10,
   },

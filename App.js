@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+
 import MainNavigator from './app/routes/routes';
 
 const App = () => <MainNavigator />;

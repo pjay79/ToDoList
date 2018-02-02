@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, AsyncStorage } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Input from '../components/Input';
 import ToDoList from '../components/ToDoList';
 
 class PendingToDos extends Component {
   static navigationOptions = {
-    title: 'Pending',
+    title: 'ToDos',
     headerTintColor: 'white',
     headerStyle: {
       backgroundColor: 'lightseagreen',
-      borderBottomWidth: 0,
     },
-    headerLeft: null,
-    tabBarLabel: 'Pending',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="th-list" type="font-awesome" size={20} color={tintColor} />
-    ),
   };
 
   state = {
@@ -25,47 +18,52 @@ class PendingToDos extends Component {
     todoList: [],
   };
 
-  componentDidMount = async () => {
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = async () => {
     const result = await AsyncStorage.getItem('todoList');
     if (result !== null || undefined) {
       this.setState({ todoList: JSON.parse(result) });
     }
   };
 
-  createToDo = (todo) => {
+  handleTextChange = (todo) => {
     this.setState({ todo });
   };
 
-  addToDo = () => {
-    if (this.state.todo.length) {
-      const todoList = [
-        ...this.state.todoList,
-        {
-          key: JSON.stringify(`${this.state.todo} - ${new Date()}`),
-          value: this.state.todo,
-          complete: false,
-        },
-      ];
-      AsyncStorage.setItem('todoList', JSON.stringify(todoList));
-      this.setState({ todoList });
-      this.setState({ todo: '' });
-      console.log(todoList);
+  addToDo = async () => {
+    if (this.state.todo) {
+      this.setState(prevState => ({
+        todo: '',
+        todoList: [
+          ...prevState.todoList,
+          {
+            key: JSON.stringify(`${prevState.todo} - ${new Date()}`),
+            value: prevState.todo,
+            complete: false,
+          },
+        ],
+      }));
+      await AsyncStorage.setItem('todoList', JSON.stringify(this.state.todoList));
+      console.log(this.state.todoList);
     }
   };
 
-  deleteToDo = (key) => {
-    const todoList = [...this.state.todoList.filter(todo => todo.key !== key)];
-    AsyncStorage.setItem('todoList', JSON.stringify(todoList));
-    this.setState({
-      todoList,
-    });
-    console.log(todoList);
+  deleteToDo = async (key) => {
+    this.setState(prevState => ({
+      todoList: prevState.todoList.filter(todo => todo.key !== key),
+    }));
+    await AsyncStorage.setItem('todoList', JSON.stringify(this.state.todoList));
+    console.log(this.state.todoList);
   };
 
   completeToDo = (key) => {
     const todoList = [...this.state.todoList];
     const completedToDo = todoList.findIndex(todo => todo.key === key);
-    todoList[completedToDo].complete = true;
+    todoList[completedToDo].complete = !todoList[completedToDo].complete;
+    this.setState({ todoList });
     AsyncStorage.setItem('todoList', JSON.stringify(todoList));
     console.log(todoList);
   };
@@ -80,7 +78,7 @@ class PendingToDos extends Component {
             completeToDo={this.completeToDo}
           />
           <Input
-            onChangeText={this.createToDo}
+            onChangeText={this.handleTextChange}
             value={this.state.todo}
             onSubmitEditing={this.addToDo}
           />

@@ -8,7 +8,6 @@ const Input = ({
 }) => (
   <View>
     <TextInput
-      autoFocus
       placeholder="Enter your todos here..."
       returnKeyType="done"
       underlineColorAndroid="transparent"
