@@ -35,7 +35,7 @@ Run on ios:
 ```react-native-run-ios ```
 
 Run on android:
-```react-native-run-ios```
+```react-native-run-android```
 
 ## Disclaimer:
 
