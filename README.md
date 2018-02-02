@@ -1,6 +1,12 @@
 # ToDoList
 This a basic ToDos App built with React Native.
 
+## Screenshots:
+
+![screenshot1](https://user-images.githubusercontent.com/14052885/35735704-c6bafd7e-0879-11e8-85a2-f8b2009e7152.png)
+![screenshot2](https://user-images.githubusercontent.com/14052885/35735705-c6eea8cc-0879-11e8-9366-ffb66067087f.png)
+![screenshot3](https://user-images.githubusercontent.com/14052885/35752416-fbba23b6-08af-11e8-82e1-b37fb3a2c3be.jpg)
+
 ## Technology stack:
 
 * react-native
@@ -50,9 +56,3 @@ Run this command below and reload to fix:
 If you can work out how to fix this please let me know.
 
 Any feedback on the code itself is also appreciated.
-
-## Screenshots:
-
-![screenshot1](https://user-images.githubusercontent.com/14052885/35735704-c6bafd7e-0879-11e8-85a2-f8b2009e7152.png)
-![screenshot2](https://user-images.githubusercontent.com/14052885/35735705-c6eea8cc-0879-11e8-9366-ffb66067087f.png)
-![screenshot3](https://user-images.githubusercontent.com/14052885/35752416-fbba23b6-08af-11e8-82e1-b37fb3a2c3be.jpg)
