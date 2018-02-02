@@ -10,6 +10,7 @@ class PendingToDos extends Component {
     headerTintColor: 'white',
     headerStyle: {
       backgroundColor: 'lightseagreen',
+      borderBottomWidth: 0,
     },
   };
 

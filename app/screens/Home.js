@@ -9,6 +9,7 @@ class Home extends Component {
     headerStyle: {
       backgroundColor: 'lightseagreen',
       elevation: 0,
+      borderBottomWidth: 0,
     },
   };
 
