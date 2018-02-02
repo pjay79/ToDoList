@@ -55,4 +55,4 @@ Any feedback on the code itself is also appreciated.
 
 ![screenshot1](https://user-images.githubusercontent.com/14052885/35735704-c6bafd7e-0879-11e8-85a2-f8b2009e7152.png)
 ![screenshot2](https://user-images.githubusercontent.com/14052885/35735705-c6eea8cc-0879-11e8-9366-ffb66067087f.png)
-![screenshot3](https://user-images.githubusercontent.com/14052885/35735706-c739aa48-0879-11e8-8e0d-c6dd7e5f758a.png)
+![screenshot3](https://user-images.githubusercontent.com/14052885/35752416-fbba23b6-08af-11e8-82e1-b37fb3a2c3be.jpg)

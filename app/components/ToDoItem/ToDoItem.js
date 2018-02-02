@@ -16,6 +16,7 @@ const ToDoItem = ({ todo, deleteToDo, completeToDo }) => (
     <Text
       style={{
         textDecorationLine: todo.complete ? 'line-through' : 'none',
+        letterSpacing: todo.complete ? 2 : 0,
         color: todo.complete ? 'white' : 'lightseagreen',
       }}
     >
@@ -31,12 +32,21 @@ const ToDoItem = ({ todo, deleteToDo, completeToDo }) => (
         />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => completeToDo(todo.key)}>
-        <Icon
-          name="check"
-          size={20}
-          color={todo.complete ? 'white' : 'lightseagreen'}
-          style={styles.iconStyle}
-        />
+        {todo.complete ? (
+          <Icon
+            name="remove"
+            size={20}
+            color={todo.complete ? 'white' : 'lightseagreen'}
+            style={styles.iconStyle}
+          />
+        ) : (
+          <Icon
+            name="check"
+            size={20}
+            color={todo.complete ? 'white' : 'lightseagreen'}
+            style={styles.iconStyle}
+          />
+        )}
       </TouchableOpacity>
     </View>
   </View>
