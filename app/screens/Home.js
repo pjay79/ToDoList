@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import Button from '../components/Button';
 
 class Home extends Component {
@@ -16,7 +15,7 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Icon name="rocket" size={30} color="white" />
+        <Image style={styles.image} source={require('../assets/images/todos.png')} />
         <Text style={styles.title}>ToDos</Text>
         <Text style={styles.description}>IT&apos;S NEVER TOO LATE TO</Text>
         <Text style={styles.description}>GET YOUR SHIT TOGETHER.</Text>
@@ -32,6 +31,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'lightseagreen',
+  },
+  image: {
+    height: 150,
+    width: 150,
   },
   title: {
     color: 'white',
