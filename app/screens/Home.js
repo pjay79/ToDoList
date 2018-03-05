@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Button from '../components/Button';
 
-class Home extends Component {
+export default class Home extends Component {
   static navigationOptions = {
-    headerStyle: {
-      backgroundColor: 'lightseagreen',
-      elevation: 0,
-      borderBottomWidth: 0,
-    },
+    header: null,
   };
 
   render() {
@@ -19,7 +15,11 @@ class Home extends Component {
         <Text style={styles.title}>ToDos</Text>
         <Text style={styles.description}>IT&apos;S NEVER TOO LATE TO</Text>
         <Text style={styles.description}>GET YOUR SHIT TOGETHER.</Text>
-        <Button title="START" onPress={() => this.props.navigation.navigate('ToDos')} />
+        <Button
+          style={{ backgroundColor: '#FC3553' }}
+          title="START"
+          onPress={() => this.props.navigation.navigate('ToDos')}
+        />
       </View>
     );
   }
@@ -57,5 +57,3 @@ Home.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
-
-export default Home;

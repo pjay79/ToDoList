@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Input from '../components/Input';
 import ToDoList from '../components/ToDoList';
 
-class PendingToDos extends Component {
+export default class ToDos extends Component {
   static navigationOptions = {
     title: 'ToDos',
     headerTintColor: 'white',
@@ -25,7 +25,7 @@ class PendingToDos extends Component {
 
   fetchData = async () => {
     const result = await AsyncStorage.getItem('todoList');
-    if (result !== null || undefined) {
+    if (result !== null) {
       this.setState({ todoList: JSON.parse(result) });
     }
   };
@@ -36,8 +36,7 @@ class PendingToDos extends Component {
 
   addToDo = async () => {
     if (this.state.todo) {
-      this.setState(prevState => ({
-        todo: '',
+      await this.setState(prevState => ({
         todoList: [
           ...prevState.todoList,
           {
@@ -46,6 +45,7 @@ class PendingToDos extends Component {
             complete: false,
           },
         ],
+        todo: '',
       }));
       await AsyncStorage.setItem('todoList', JSON.stringify(this.state.todoList));
       console.log(this.state.todoList);
@@ -53,19 +53,19 @@ class PendingToDos extends Component {
   };
 
   deleteToDo = async (key) => {
-    this.setState(prevState => ({
+    await this.setState(prevState => ({
       todoList: prevState.todoList.filter(todo => todo.key !== key),
     }));
     await AsyncStorage.setItem('todoList', JSON.stringify(this.state.todoList));
     console.log(this.state.todoList);
   };
 
-  completeToDo = (key) => {
+  completeToDo = async (key) => {
     const todoList = [...this.state.todoList];
     const completedToDo = todoList.findIndex(todo => todo.key === key);
     todoList[completedToDo].complete = !todoList[completedToDo].complete;
-    this.setState({ todoList });
-    AsyncStorage.setItem('todoList', JSON.stringify(todoList));
+    await this.setState({ todoList });
+    await AsyncStorage.setItem('todoList', JSON.stringify(todoList));
     console.log(todoList);
   };
 
@@ -95,7 +95,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingTop: 10,
+    paddingBottom: 30,
   },
 });
-
-export default PendingToDos;
