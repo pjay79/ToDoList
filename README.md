@@ -6,15 +6,12 @@ This a basic ToDos App built with React Native.
 
 ### iOS
 
-![screenshot1](https://user-images.githubusercontent.com/14052885/35735704-c6bafd7e-0879-11e8-85a2-f8b2009e7152.png)
-![screenshot2](https://user-images.githubusercontent.com/14052885/35735705-c6eea8cc-0879-11e8-9366-ffb66067087f.png)
-![screenshot3](https://user-images.githubusercontent.com/14052885/35752416-fbba23b6-08af-11e8-82e1-b37fb3a2c3be.jpg)
-
-### Android
-
-![android1s](https://user-images.githubusercontent.com/14052885/35763862-c6f6a708-0909-11e8-9c26-3eb50e4f1514.jpg)
-![android2s](https://user-images.githubusercontent.com/14052885/35763863-c748d9ba-0909-11e8-9a55-627ce06c3bc7.jpg)
-![android3s](https://user-images.githubusercontent.com/14052885/35763864-c77d7918-0909-11e8-8952-02fed05d92e4.jpg)
+![simulator screen shot - iphone x - 2018-03-05 at 18 23 47](https://user-images.githubusercontent.com/14052885/36962285-008db76c-20a3-11e8-80f8-c693fe109964.png)
+![simulator screen shot - iphone x - 2018-03-05 at 18 26 17](https://user-images.githubusercontent.com/14052885/36962291-05a1b622-20a3-11e8-9d57-26f384f9b871.png)
+![simulator screen shot - iphone x - 2018-03-05 at 18 23 36](https://user-images.githubusercontent.com/14052885/36962332-3f44e098-20a3-11e8-99fd-978dd2cac4e2.png)
+![simulator screen shot - iphone x - 2018-03-05 at 18 24 30](https://user-images.githubusercontent.com/14052885/36962300-0f760a40-20a3-11e8-8785-a7f85e9e9652.png)
+![simulator screen shot - iphone x - 2018-03-05 at 18 24 34](https://user-images.githubusercontent.com/14052885/36962304-11fdddec-20a3-11e8-9273-2d77fac60749.png)
+![simulator screen shot - iphone x - 2018-03-05 at 18 25 26](https://user-images.githubusercontent.com/14052885/36962335-41468220-20a3-11e8-9870-ff2d2fed4f47.png)
 
 ## Technology stack:
 
