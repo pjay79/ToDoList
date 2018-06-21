@@ -30,7 +30,9 @@ export default class ToDos extends Component {
   fetchData = async () => {
     try {
       const result = await AsyncStorage.getItem('todoList');
-      this.setState({ todoList: JSON.parse(result) });
+      if (result) {
+        this.setState({ todoList: JSON.parse(result) });
+      }
     } catch (error) {
       console.log(error);
     }
