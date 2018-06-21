@@ -18,7 +18,7 @@ export default class Home extends Component {
       <View style={styles.container}>
         <View>
           <Text style={styles.title}>Stuff To Do</Text>
-          <Text style={styles.subtitle}>REACT NATIVE</Text>
+          <Text style={styles.subtitle}>- REACT NATIVE APP -</Text>
         </View>
         <View>
           <Image style={styles.image} source={require('../assets/images/todos.png')} />
