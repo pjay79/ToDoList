@@ -1,10 +1,7 @@
-import { StyleSheet, Dimensions } from 'react-native';
-
-const { width } = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   itemWrapper: {
-    width,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -14,11 +11,11 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   todo: {
-    width: width * 0.9,
+    width: '90%',
     paddingLeft: 10,
   },
   buttons: {
-    width: width * 0.1,
+    width: '10%',
   },
 });
 

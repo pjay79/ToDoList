@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 
 const ToDoItem = ({ todo, deleteToDo, completeToDo }) => (
@@ -20,7 +20,6 @@ const ToDoItem = ({ todo, deleteToDo, completeToDo }) => (
           textDecorationLine: todo.complete ? 'line-through' : 'none',
           letterSpacing: todo.complete ? 2 : 0,
           color: todo.complete ? 'white' : 'lightseagreen',
-          width: '80%',
         },
       ]}
     >
@@ -28,7 +27,7 @@ const ToDoItem = ({ todo, deleteToDo, completeToDo }) => (
     </Text>
     <View style={styles.buttons}>
       <TouchableOpacity onPress={() => deleteToDo(todo.key)}>
-        <Icon
+        <FontAwesome
           name="trash-o"
           size={20}
           color={todo.complete ? 'white' : 'lightseagreen'}
@@ -37,14 +36,14 @@ const ToDoItem = ({ todo, deleteToDo, completeToDo }) => (
       </TouchableOpacity>
       <TouchableOpacity onPress={() => completeToDo(todo.key)}>
         {todo.complete ? (
-          <Icon
+          <FontAwesome
             name="remove"
             size={20}
             color={todo.complete ? 'white' : 'lightseagreen'}
             style={styles.iconStyle}
           />
         ) : (
-          <Icon
+          <FontAwesome
             name="check"
             size={20}
             color={todo.complete ? 'white' : 'lightseagreen'}
@@ -60,6 +59,7 @@ ToDoItem.propTypes = {
   todo: PropTypes.shape({
     key: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
+    complete: PropTypes.bool.isRequired,
   }).isRequired,
   deleteToDo: PropTypes.func.isRequired,
   completeToDo: PropTypes.func.isRequired,

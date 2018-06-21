@@ -5,12 +5,8 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: '#FC3553',
-    marginTop: 10,
-    marginBottom: 10,
-    paddingLeft: 40,
-    paddingRight: 40,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingHorizontal: 40,
+    paddingVertical: 10,
     width: width * 0.8,
     borderRadius: 8,
   },

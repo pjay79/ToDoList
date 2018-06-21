@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { FlatList } from 'react-native';
 import ToDoItem from '../ToDoItem';
 
@@ -16,6 +16,7 @@ ToDoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
     key: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
+    complete: PropTypes.bool.isRequired,
   })),
   deleteToDo: PropTypes.func.isRequired,
   completeToDo: PropTypes.func.isRequired,
