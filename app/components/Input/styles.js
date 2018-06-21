@@ -5,12 +5,13 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   inputStyle: {
     backgroundColor: 'white',
-    marginTop: 10,
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    width: width * 0.8,
+    width,
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    borderColor: 'lightseagreen',
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    marginBottom: 30,
   },
 });
 
