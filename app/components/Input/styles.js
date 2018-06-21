@@ -6,12 +6,10 @@ const styles = StyleSheet.create({
   inputStyle: {
     backgroundColor: 'white',
     width,
-    borderTopWidth: 2,
-    borderBottomWidth: 2,
-    borderColor: 'lightseagreen',
+    borderBottomWidth: 4,
+    borderColor: '#FC3553',
     paddingVertical: 20,
     paddingHorizontal: 10,
-    marginBottom: 30,
   },
 });
 

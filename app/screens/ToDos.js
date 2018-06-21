@@ -81,15 +81,15 @@ export default class ToDos extends Component {
     return (
       <KeyboardAwareScrollView>
         <View style={styles.container}>
-          <ToDoList
-            todos={this.state.todoList}
-            deleteToDo={this.deleteToDo}
-            completeToDo={this.completeToDo}
-          />
           <Input
             onChangeText={this.onChangeText}
             value={this.state.todo}
             onSubmitEditing={this.addToDo}
+          />
+          <ToDoList
+            todos={this.state.todoList}
+            deleteToDo={this.deleteToDo}
+            completeToDo={this.completeToDo}
           />
         </View>
       </KeyboardAwareScrollView>
