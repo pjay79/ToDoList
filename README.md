@@ -13,10 +13,12 @@ This a basic ToDos App built with React Native.
 
 ## Technology stack:
 
+* prop-types
 * react-native
 * react-navigation
 * react-native-vector-icons
 * react-native-keyboard-aware-scroll-view
+* uuid
 
 ## Installation
 
