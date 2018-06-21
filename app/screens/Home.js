@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 import Button from '../components/Button';
 
 export default class Home extends Component {
@@ -8,18 +9,22 @@ export default class Home extends Component {
     header: null,
   };
 
+  componentDidMount() {
+    SplashScreen.hide();
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.image} source={require('../assets/images/todos.png')} />
-        <Text style={styles.title}>ToDos</Text>
-        <Text style={styles.description}>IT&apos;S NEVER TOO LATE TO</Text>
-        <Text style={styles.description}>GET YOUR SHIT TOGETHER.</Text>
-        <Button
-          style={{ backgroundColor: '#FC3553' }}
-          title="START"
-          onPress={() => this.props.navigation.navigate('ToDos')}
-        />
+        <View>
+          <Text style={styles.title}>Stuff To Do</Text>
+          <Text style={styles.subtitle}>REACT NATIVE</Text>
+        </View>
+        <View>
+          <Image style={styles.image} source={require('../assets/images/todos.png')} />
+          <Text style={styles.imageText}>It&apos;s never too late to get your shit together.</Text>
+        </View>
+        <Button title="START" onPress={() => this.props.navigation.navigate('ToDos')} />
       </View>
     );
   }
@@ -28,27 +33,33 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: 'lightseagreen',
-  },
-  image: {
-    height: 150,
-    width: 150,
   },
   title: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 36,
-    marginTop: 10,
-    marginBottom: 10,
+    fontSize: 54,
+    fontFamily: 'NoteWorthy-Bold',
   },
-  description: {
+  subtitle: {
     color: 'white',
     fontSize: 14,
-    letterSpacing: 4,
-    paddingLeft: 10,
-    paddingRight: 10,
+    fontFamily: 'Verdana-Bold',
+    letterSpacing: 2,
+    textAlign: 'center',
+  },
+  image: {
+    height: 150,
+    width: 150,
+    alignSelf: 'center',
+  },
+  imageText: {
+    color: 'white',
+    fontSize: 14,
+    fontFamily: 'NoteWorthy',
+    marginTop: 20,
   },
 });
 

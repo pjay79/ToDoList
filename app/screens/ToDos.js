@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, AsyncStorage } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import uuidV4 from 'uuid/v4';
 import Input from '../components/Input';
 import ToDoList from '../components/ToDoList';
 
@@ -10,7 +11,6 @@ export default class ToDos extends Component {
     headerTintColor: 'white',
     headerStyle: {
       backgroundColor: 'lightseagreen',
-      borderBottomWidth: 0,
     },
   };
 
@@ -23,50 +23,58 @@ export default class ToDos extends Component {
     this.fetchData();
   }
 
-  fetchData = async () => {
-    const result = await AsyncStorage.getItem('todoList');
-    if (result !== null) {
-      this.setState({ todoList: JSON.parse(result) });
-    }
-  };
-
-  handleTextChange = (todo) => {
+  onChangeText = (todo) => {
     this.setState({ todo });
   };
 
-  addToDo = async () => {
-    if (this.state.todo) {
-      await this.setState(prevState => ({
-        todoList: [
-          ...prevState.todoList,
-          {
-            key: JSON.stringify(`${prevState.todo} - ${new Date()}`),
-            value: prevState.todo,
-            complete: false,
-          },
-        ],
-        todo: '',
-      }));
-      await AsyncStorage.setItem('todoList', JSON.stringify(this.state.todoList));
-      console.log(this.state.todoList);
+  fetchData = async () => {
+    try {
+      const result = await AsyncStorage.getItem('todoList');
+      this.setState({ todoList: JSON.parse(result) });
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  deleteToDo = async (key) => {
-    await this.setState(prevState => ({
-      todoList: prevState.todoList.filter(todo => todo.key !== key),
-    }));
-    await AsyncStorage.setItem('todoList', JSON.stringify(this.state.todoList));
-    console.log(this.state.todoList);
+  addToDo = () => {
+    if (this.state.todo) {
+      this.setState(
+        prevState => ({
+          todoList: [
+            ...prevState.todoList,
+            {
+              key: uuidV4(),
+              value: prevState.todo,
+              complete: false,
+            },
+          ],
+          todo: '',
+        }),
+        () => {
+          AsyncStorage.setItem('todoList', JSON.stringify(this.state.todoList));
+        },
+      );
+    }
   };
 
-  completeToDo = async (key) => {
+  deleteToDo = (key) => {
+    this.setState(
+      prevState => ({
+        todoList: prevState.todoList.filter(todo => todo.key !== key),
+      }),
+      () => {
+        AsyncStorage.setItem('todoList', JSON.stringify(this.state.todoList));
+      },
+    );
+  };
+
+  completeToDo = (key) => {
     const todoList = [...this.state.todoList];
     const completedToDo = todoList.findIndex(todo => todo.key === key);
     todoList[completedToDo].complete = !todoList[completedToDo].complete;
-    await this.setState({ todoList });
-    await AsyncStorage.setItem('todoList', JSON.stringify(todoList));
-    console.log(todoList);
+    this.setState({ todoList }, () => {
+      AsyncStorage.setItem('todoList', JSON.stringify(todoList));
+    });
   };
 
   render() {
@@ -79,7 +87,7 @@ export default class ToDos extends Component {
             completeToDo={this.completeToDo}
           />
           <Input
-            onChangeText={this.handleTextChange}
+            onChangeText={this.onChangeText}
             value={this.state.todo}
             onSubmitEditing={this.addToDo}
           />
