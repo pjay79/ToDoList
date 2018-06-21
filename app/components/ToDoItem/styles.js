@@ -4,25 +4,21 @@ const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   itemWrapper: {
+    width,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: width * 0.8,
     backgroundColor: 'white',
-    borderColor: 'lightseagreen',
-    borderWidth: 2,
-    marginTop: 10,
-    marginBottom: 5,
+    paddingBottom: 10,
+    paddingTop: 10,
+    margin: 0,
+  },
+  todo: {
+    width: width * 0.9,
     paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 5,
-    paddingTop: 5,
   },
-  buttonWrapper: {
-    alignSelf: 'flex-end',
-  },
-  iconStyle: {
-    margin: 5,
+  buttons: {
+    width: width * 0.1,
   },
 });
 

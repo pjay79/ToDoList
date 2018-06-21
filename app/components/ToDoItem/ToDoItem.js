@@ -14,15 +14,19 @@ const ToDoItem = ({ todo, deleteToDo, completeToDo }) => (
     ]}
   >
     <Text
-      style={{
-        textDecorationLine: todo.complete ? 'line-through' : 'none',
-        letterSpacing: todo.complete ? 2 : 0,
-        color: todo.complete ? 'white' : 'lightseagreen',
-      }}
+      style={[
+        styles.todo,
+        {
+          textDecorationLine: todo.complete ? 'line-through' : 'none',
+          letterSpacing: todo.complete ? 2 : 0,
+          color: todo.complete ? 'white' : 'lightseagreen',
+          width: '80%',
+        },
+      ]}
     >
       {todo.value}
     </Text>
-    <View style={styles.buttonWrapper}>
+    <View style={styles.buttons}>
       <TouchableOpacity onPress={() => deleteToDo(todo.key)}>
         <Icon
           name="trash-o"
